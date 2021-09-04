@@ -3,7 +3,7 @@
 include makefile.config
 -include makefile.config.local
 
-.PHONY: build debug default logs remove run session shell start status stop
+.PHONY: build debug default logs remove run shell start status stop tmux-attach-session tmux-list-sessions tmux-new-session
 
 default: build
 
@@ -36,9 +36,6 @@ run:
 		$(registry)$(namespace)/$(image):$(tag) \
 		$(ARGS)
 
-session:
-	docker exec --interactive=true --tty=true $(name) /usr/bin/tmux new-session
-
 shell:
 	docker exec --interactive=true --tty=true $(name) /bin/login -f root -p $(ARGS)
 
@@ -50,4 +47,13 @@ status:
 
 stop:
 	docker stop $(ARGS) $(name)
+
+tmux-attach-session:
+	docker exec --interactive=true --tty=true $(name) /usr/bin/tmux attach-session $(ARGS)
+
+tmux-list-sessions:
+	docker exec --interactive=true --tty=true $(name) /usr/bin/tmux list-session $(ARGS)
+
+tmux-new-session:
+	docker exec --interactive=true --tty=true $(name) /usr/bin/tmux new-session $(ARGS)
 
