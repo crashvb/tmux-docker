@@ -15,7 +15,7 @@ LABEL \
 
 # Install packages, download files ...
 RUN docker-apt git openssh-client python3 python3-pip tmux && \
-	python3 -m pip install --upgrade pip && \
+	python3 -m pip install --upgrade pip setuptools && \
 	python3 -m pip install tmuxp && \
 	mkdir --parents /root/.tmux /root/.tmuxp && \
 	git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
