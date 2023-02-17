@@ -1,10 +1,10 @@
-FROM crashvb/base:20.04-202201080422@sha256:57745c66439ee82fda88c422b4753a736c1f59d64d2eaf908e9a4ea1999225ab
+FROM crashvb/base:22.04-202302172016@sha256:aa45348250be126f4b4e3d4f3de6d8314159426d517fb1e0a7ecdf32905fdf26
 ARG org_opencontainers_image_created=undefined
 ARG org_opencontainers_image_revision=undefined
 LABEL \
 	org.opencontainers.image.authors="Richard Davis <crashvb@gmail.com>" \
-	org.opencontainers.image.base.digest="sha256:57745c66439ee82fda88c422b4753a736c1f59d64d2eaf908e9a4ea1999225ab" \
-	org.opencontainers.image.base.name="crashvb/base:20.04-202201080422" \
+	org.opencontainers.image.base.digest="sha256:aa45348250be126f4b4e3d4f3de6d8314159426d517fb1e0a7ecdf32905fdf26" \
+	org.opencontainers.image.base.name="crashvb/base:22.04-202302172016" \
 	org.opencontainers.image.created="${org_opencontainers_image_created}" \
 	org.opencontainers.image.description="Image containing tmux." \
 	org.opencontainers.image.licenses="Apache-2.0" \
@@ -14,6 +14,7 @@ LABEL \
 	org.opencontainers.image.url="https://github.com/crashvb/tmux-docker"
 
 # Install packages, download files ...
+# hadolint ignore=DL3013
 RUN docker-apt git openssh-client python3 python3-pip tmux && \
 	python3 -m pip install --no-cache-dir --upgrade pip setuptools && \
 	python3 -m pip install --no-cache-dir tmuxp && \
