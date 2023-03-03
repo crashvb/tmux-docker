@@ -19,10 +19,6 @@ This docker image contains:
 
 None.
 
-## Healthcheck Scripts
-
-None.
-
 ## Standard Configuration
 
 ### Container Layout
